@@ -27,6 +27,8 @@ pkg i virglrenderer-android -y
 echo "Installing scripts..."
 curl -s -o $PATH/qemu-new-machine https://raw.githubusercontent.com/alexdvn/QemuDroid/refs/heads/main/new-machine.sh
 chmod +x $PATH/qemu-new-machine
+curl -s -o $PATH/qemu-start https://raw.githubusercontent.com/alexdvn/QemuDroid/refs/heads/main/start.sh
+chmod +x $PATH/qemu-start
 
 echo "Installation complete!"
 exit 0
