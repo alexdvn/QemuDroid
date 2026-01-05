@@ -73,7 +73,7 @@ read -p "Are you using a Virtual CD/DVD? (y/n)" ISOCHOICE
 if [[ "$ISOCHOICE" = "Y" || "$ISOCHOICE" = "y" ]]; then
   read -p "Where is your ISO?:" ISOPATH
   if ! ls "$ISOPATH" >> /dev/null 2>&1; then
-    echo -e "$RED ERROR: '$ISOPATH' not found: No such file or directory"
+    echo -e "$RED ERROR: '$ISOPATH' not found: No such file or directory $NC"
     exit 1
   fi
 fi
@@ -89,8 +89,64 @@ if ! ls "$QCOW2PATH" >> /dev/null 2>&1; then
   fi
 fi
 
-# More to add, just testing now though.
+echo "What sound card do you want to use?"
+echo "1.) Sound Blaster 16"
+echo "2.) Intel AC'97"
+echo "3.) if unsure, pick this option"
+
+read -p "Choose a Sound Card" soundchoice
+
+case $soundchoice in
+  1)
+    SOUND="sb16"
+    ;;
+  2)
+    SOUND="ac97"
+    ;;
+  3)
+    echo -e "$GREEN Enabling all supported sound cards... $NC"
+    SOUND="all"
+    ;;
+esac
+
+export SOUND
+
+echo -e "$GREEN SOUND is $SOUND $NC"
+sleep 5
+clear
+
+read -p "Do you want to use internet (Not Reccomended) (Y/n)" netchoice
+if [[ "$netchoice" = "Y" || "$netchoice" = "y" ]]; then
+  echo "Please pick a Network card"
+  echo "1.) AMD PCnet FAST III Ethernet"
+  echo "2.) Intel PRO/1000 MT Desktop Adapter"
+  echo "3.) Realtek 8139 Fast Ethernet"
+  read -p "What are you choosing?" cardchoice
+  case $cardchoice in
+    1)
+      NETCARD="pcnet"
+      ;;
+    2)
+      NETCARD="ac97"
+      ;;
+    3)
+      NETCARD="rtl8139"
+      ;;
+  esac
+  export NETCARD
+  echo -e "$GREEN NETCARD is $NETCARD $NC"
+  clear
+fi
+
+echo 'CPU="$CPU"
+RAM="$RAM"
+ISOPATH="$ISOPATH"
+QCOW2PATH="QCOW2PATH"
+SOUND="$SOUND"
+NETCARD="NETCARD"' >> $PREFIX/etc/$VMNAME
+
+exit 0
 
 
 
-  
+ 
