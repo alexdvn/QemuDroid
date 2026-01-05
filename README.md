@@ -21,4 +21,4 @@ if using X11 or just
 ```
 start-qemu [VMname]
 ```
-if using CNC
+if using VNC
