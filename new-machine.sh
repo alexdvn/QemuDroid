@@ -83,7 +83,7 @@ if ! ls "$QCOW2PATH" >> /dev/null 2>&1; then
   read -p "$QCOW2PATH not found, would you like to create it? (y/n):" QCOW2CHOICE
   if [[ "$QCOW2CHOICE" = "Y" || "$QCOW2CHOICE" = "y" ]]; then
     read -p "Pick a Disk size, M for MESGABITES and G for GIGABYTES..." QCOW2SIZE
-    qemu-img create -f qcow2 "$TMPDIR/Deb.qcow2" 
+    qemu-img create -f qcow2 "$TMPDIR/Deb.qcow2" "$QCOW2SIZE"
     qemu-img convert -c -O qcow2 "$TMPDIR/Deb.qcow2" "$QCOW2PATH"
     rm "$TMPDIR/Deb.qcow2"
   fi
