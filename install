@@ -1,0 +1,32 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+echo "QemuDroid install script"
+echo "This script will... I mean i think I just said what it does."
+echo "First, make sure your phone is in vertical mode..."
+sleep 5
+termux-change-repo
+
+yes | pkg up
+
+pkg i x11-repo
+
+#pkg i tur-repo
+
+echo "Installing QEMU..."
+pkg i qemu-system-x86-64 -y
+
+echo "Installing Termux-X11..."
+pkg I termux-x11-nightly -y
+
+echo "Installing VirGL and ANGLE for Android..."
+pkg i virglrenderer-android -y
+
+#echo "Installing Mesa-Zink..."
+#pkg i osnesa-zink virglrenderer-mesa-zink -y
+
+echo "Installing scripts..."
+curl -s -o $PATH/qemu-new-machine https://raw.githubusercontent.com/alexdvn/QemuDroid/refs/heads/main/new-machine.sh
+chmod +x $PATH/qemu-new-machine
+
+echo "Installation complete!"
+exit 0
