@@ -1,7 +1,9 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-source "$VMNAME/config"
-command="qemu-system-x86_64 -M pc -m $RAM -cpu $CPU -hda $QCOW2PATH"
+VMNAME="$@"
+
+source "$PREFIX/etc/$VMNAME"
+command="qemu-system-x86_64 -M pc -m $RAM -cpu $CPU -hda $QCOW2PATH -full-screen"
 
 if [[ -n "$NET" ]]; then
   command+=" -nic user,model=$NET"
