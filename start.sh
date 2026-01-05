@@ -17,8 +17,8 @@ if [[ -n "$SOUND" ]]; then
   command+=" -device $SOUND"
 fi
 
-if [[ -n "$@" ]]; then
-  command+=" $@"
+if [[ -n "$VNC" ]]; then
+  command+=" -vnc $VMC"
 fi
 
 eval "$command"
