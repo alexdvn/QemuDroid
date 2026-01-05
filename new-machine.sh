@@ -138,12 +138,19 @@ if [[ "$netchoice" = "Y" || "$netchoice" = "y" ]]; then
   clear
 fi
 
+read -p "Do you want to use VNC? (y/N)" vncchoice
+
+if [[ "$vncchoice = "Y" || "$vncchoice" = "y" ]]; then
+  VNC=":1"
+fi
+
 echo 'CPU="$CPU"
 RAM="$RAM"
 ISOPATH="$ISOPATH"
 QCOW2PATH="QCOW2PATH"
 SOUND="$SOUND"
-NETCARD="NETCARD"' >> $PREFIX/etc/$VMNAME
+NETCARD="NETCARD"
+VNC="$VNC"' >> $PREFIX/etc/$VMNAME
 
 exit 0
 
