@@ -16,7 +16,7 @@ echo "Installing QEMU..."
 pkg i qemu-system-x86-64 -y
 
 echo "Installing Termux-X11..."
-pkg I termux-x11-nightly -y
+pkg i termux-x11-nightly -y
 
 echo "Installing VirGL and ANGLE for Android..."
 pkg i virglrenderer-android -y
