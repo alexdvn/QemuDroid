@@ -13,7 +13,7 @@ pkg i x11-repo
 #pkg i tur-repo
 
 echo "Installing QEMU..."
-pkg i qemu-system-x86-64 -y
+pkg i qemu-system-x86-64 qemu-utils -y
 
 echo "Installing Termux-X11..."
 pkg i termux-x11-nightly -y
