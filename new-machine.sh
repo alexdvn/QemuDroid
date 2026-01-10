@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/bash
+#!/data/data/com.termux/files/usr/bin/bash
 #this command can sometimes cause issues, I will uncomment if I feel like it's needed
 #set -euo pipefail
 
