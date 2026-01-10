@@ -21,6 +21,11 @@ if [[ -n "$VNC" ]]; then
   command+=" -vnc $VNC"
 fi
 
+# use the "QEMU_EXTRA_ARGS" envar
+if [[ -n "$QEMU_EXTRA_ARGS" ]]; then
+  command+=" $QEMU_EXTRA_ARGS"
+fi
+
 eval "$command"
 
 
