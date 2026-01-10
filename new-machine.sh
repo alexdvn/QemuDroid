@@ -140,7 +140,7 @@ fi
 
 read -p "Do you want to use VNC? (y/N)" vncchoice
 
-if [[ "$vncchoice = "Y" || "$vncchoice" = "y" ]]; then
+if [[ "$vncchoice" = "Y" || "$vncchoice" = "y" ]]; then
   VNC=":1"
 fi
 
