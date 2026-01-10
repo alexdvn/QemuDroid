@@ -144,13 +144,18 @@ if [[ "$vncchoice = "Y" || "$vncchoice" = "y" ]]; then
   VNC=":1"
 fi
 
-echo 'CPU="$CPU"
+read -p "Pick a short name for your VM" VMNAME
+
+cat <<EOF >> "$PREFIX/etc/$VMNAME"
+CPU="$CPU"
 RAM="$RAM"
 ISOPATH="$ISOPATH"
-QCOW2PATH="QCOW2PATH"
+QCOW2PATH="$QCOW2PATH"
 SOUND="$SOUND"
-NETCARD="NETCARD"
-VNC="$VNC"' >> $PREFIX/etc/$VMNAME
+NETCARD="$NETCARD"
+VNC="$VNC"
+EOF
+
 
 exit 0
 
